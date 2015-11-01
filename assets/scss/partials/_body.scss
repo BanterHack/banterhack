@@ -1,21 +1,42 @@
 body {
   background-color: $dark-grey;
   color: $white;
+  margin-bottom: 50px;
 }
 
 hr{
   border-color: $light-pink;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
-/* build-cool-shit */
+h1{
+  margin-bottom: 50px;
+}
 
-.build-cool-shit{
-  text-align: center;
-  
-  img{
-    margin-top: 5px;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-  }
+i{
+  margin-right: 10px;
+}
+
+.fa-thumbs-up{
+  color: green;
+}
+
+.fa-thumbs-down{
+  color: red;
+}
+
+.build-cool-shit img{
+  margin-top: 5px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+}
+
+.sponsors img{
+  border-radius: 3px;
+}
+
+.list-group-item{
+  background-color: transparent;
 }

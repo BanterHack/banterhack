@@ -1,17 +1,36 @@
 body {
   background-color: #252525;
-  color: #fff; }
+  color: #FFFFFF;
+  margin-bottom: 50px; }
 
   hr {
-    border-color: #FFC0CB; }
+    border-color: #FFC0CB;
+    margin-top: 50px;
+    margin-bottom: 50px; }
 
-    .build-cool-shit {
-      text-align: center; }
-      .build-cool-shit img {
-        margin-top: 5px;
-        width: 180px;
-        height: 180px;
-        border-radius: 50%; }
+    h1 {
+      margin-bottom: 50px; }
+
+      i {
+        margin-right: 10px; }
+
+        .fa-thumbs-up {
+          color: green; }
+
+          .fa-thumbs-down {
+            color: red; }
+
+            .build-cool-shit img {
+              margin-top: 5px;
+              width: 180px;
+              height: 180px;
+              border-radius: 50%; }
+
+              .sponsors img {
+                border-radius: 3px; }
+
+                .list-group-item {
+                  background-color: transparent; }
 .power-station {
   width: 100%;
   padding: 0;
