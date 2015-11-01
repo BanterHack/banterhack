@@ -1,0 +1,29 @@
+%popup{
+  text-decoration: none;
+  color: $light-grey;
+  position: absolute;
+  font-size: 12px;
+  padding: 12px;
+  background-color: rgba(255,255,255,0.15);
+  border-radius: 6px;
+}
+
+a.oh-god-turn-it-off-please-my-computer-is-on-fire{
+  @extend %popup;
+  top: 12px;
+  right: 12px;
+  width: 200px;
+}
+
+.the-music{
+  @extend %popup;
+  left: 12px;
+  bottom: 12px;
+  width: 200px;
+  padding: 0;
+  //position: fixed;
+
+  &.music-hide{
+    left: -100%;
+  }
+}
