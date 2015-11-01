@@ -1,10 +1,13 @@
 window.onload = function() {
 
-  var $ = document;
+  //var document = document;
 
-  var canvas = $.getElementsByClassName('power-core')[0];
-  var laserGridToggle = $.getElementsByClassName('oh-god-turn-it-off-please-my-computer-is-on-fire')[0];
-  var powerStation = $.getElementsByClassName('power-station')[0];
+  var canvas = document.getElementsByClassName('power-core')[0];
+  var laserGridToggle = document.getElementsByClassName('oh-god-turn-it-off-please-my-computer-is-on-fire')[0];
+  var powerStation = document.getElementsByClassName('power-station')[0];
+  var music = document.getElementsByClassName('the-music')[0];
+  var mute = document.getElementById('mute');
+
   var ctx = canvas.getContext('2d');
   var w = canvas.width;
   var h = canvas.height;
@@ -15,6 +18,22 @@ window.onload = function() {
   var lineCount = w/30;
 
   var laserGridOnline = true;
+
+  var song = new Audio('static/audio/power-glove--power-core.ogg','static/audio/power-glove--power-core.mp3');
+  var duration = song.duration;
+  
+  if (song.canPlayType('audio/mpeg;')) {
+    song.type= 'audio/mpeg';
+    song.src= 'static/audio/power-glove--power-core.mp3';
+  } else {
+    song.type= 'audio/ogg';
+    song.src= 'static/audio/power-glove--power-core.ogg';
+  }
+
+ // song.play();
+
+  console.log(song);
+
 
   function resizeCanvas() {
     if(powerStation.offsetWidth <= 768){
@@ -38,8 +57,8 @@ window.onload = function() {
       cy2 = canvas.height;
 
   var flip = {
+    
     theSwitch: function () {
-
       window.requestAnimationFrame(flip.table);
     },
 
@@ -103,6 +122,20 @@ window.onload = function() {
 
   window.addEventListener('resize', resizeCanvas, false);
 
+  /*mute.addEventListener("click", function(e) {
+    if(song.muted !== true){
+      song.muted = true;
+      this.className = "fa fa-volume-off";
+    }else{
+      song.muted = false;
+      this.className = "fa fa-volume-up";
+    }
+  });*/
+  
+  setTimeout(function(){
+    music.className = "the-music animated bounceInLeft ";
+  },500);
+
   laserGridToggle.addEventListener("click", function(e) {
     if(laserGridOnline === true){
       laserGridOnline = false;
@@ -113,5 +146,4 @@ window.onload = function() {
       laserGridToggle.innerHTML = "My computer is on fire, please turn of this terribly coded and inefficient LASER GRID.";
     }
   });
-
 };
