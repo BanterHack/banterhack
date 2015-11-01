@@ -1,3 +1,4 @@
+/* main */
 body {
   background-color: #252525;
   color: #fff;
@@ -6,17 +7,7 @@ hr{
   border-color: pink;
 }
 
-.build-cool-shit{
-  text-align: center;
-}
-.build-cool-shit img{
-  margin-top: 5px;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-}
-
-
+/* power-station */
 .power-plant,
 .power-station{
   width: 100%;
@@ -24,9 +15,7 @@ hr{
   margin: 0;
   height: 400px;
   position: relative;
-
 }
-
 .power-core{
   background-image: url(http://make.cat/assets/images/bg.png);
   border-bottom: 2px solid pink;
@@ -34,7 +23,6 @@ hr{
   background-size: cover;
   background-position: center;
 }
-
 img.power-source{
   position: absolute;
   width: 500px;
@@ -43,7 +31,6 @@ img.power-source{
   top: 50%;
   margin-top: -151px;
 }
-
 a.oh-god-turn-it-off-please-my-computer-is-on-fire,
 .the-music{
   text-decoration: none;
@@ -54,34 +41,26 @@ a.oh-god-turn-it-off-please-my-computer-is-on-fire,
   background-color: rgba(255,255,255,0.15);
   border-radius: 6px;
 }
-
 a.oh-god-turn-it-off-please-my-computer-is-on-fire{
   top: 12px;
   right: 12px;
   width: 200px;
 }
-
 .the-music{
-
   left: 12px;
   bottom: 12px;
   width: 200px;
   padding: 0;
   /*position: fixed;*/
 }
-
 .the-music img{
   width: 60px;
   float: left;
 }
-
 .music-hide{
   left: -100%;
 }
-
-
 @media (max-width: 768px) {
-
   img.power-source {
     position: absolute;
     width: 250px;
@@ -90,10 +69,19 @@ a.oh-god-turn-it-off-please-my-computer-is-on-fire{
     top: 50%;
     margin-top: -76px;
   }
-
   .power-plant,
   .power-station {
     height: 200px;
   }
+}
 
+/* build-cool-shit */
+.build-cool-shit{
+  text-align: center;
+}
+.build-cool-shit img{
+  margin-top: 5px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
 }
