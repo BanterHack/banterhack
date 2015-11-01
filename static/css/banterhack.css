@@ -1,15 +1,13 @@
 body {
   background-color: #252525;
   color: #FFFFFF;
-  margin-bottom: 50px; }
+  margin-bottom: 80px; }
 
   hr {
-    border-color: #FFC0CB;
-    margin-top: 50px;
-    margin-bottom: 50px; }
+    border-color: #FFC0CB; }
 
     h1 {
-      margin-bottom: 50px; }
+      margin-top: 50px; }
 
       i {
         margin-right: 10px; }
