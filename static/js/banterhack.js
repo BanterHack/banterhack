@@ -19,7 +19,7 @@ window.onload = function() {
 
   var laserGridOnline = true;
 
-  var song = new Audio('static/audio/power-glove--power-core.ogg','static/audio/power-glove--power-core.mp3');
+  /*var song = new Audio('static/audio/power-glove--power-core.ogg','static/audio/power-glove--power-core.mp3');
   var duration = song.duration;
   
   if (song.canPlayType('audio/mpeg;')) {
@@ -30,10 +30,10 @@ window.onload = function() {
     song.src= 'static/audio/power-glove--power-core.ogg';
   }
 
- // song.play();
+  song.play();
 
   console.log(song);
-
+  */
 
   function resizeCanvas() {
     if(powerStation.offsetWidth <= 768){
