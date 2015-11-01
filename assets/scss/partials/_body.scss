@@ -1,0 +1,21 @@
+body {
+  background-color: $dark-grey;
+  color: $white;
+}
+
+hr{
+  border-color: $light-pink;
+}
+
+/* build-cool-shit */
+
+.build-cool-shit{
+  text-align: center;
+  
+  img{
+    margin-top: 5px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+  }
+}
