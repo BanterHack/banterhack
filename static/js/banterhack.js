@@ -1,6 +1,23 @@
-window.onload = function() {
+window.addEventListener("DOMContentLoaded", function() {
 
-  //var document = document;
+  function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+  }
+
+  function getCookie(cname) {
+    
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+  }
 
   var canvas = document.getElementsByClassName('power-core')[0];
   var laserGridToggle = document.getElementsByClassName('oh-god-turn-it-off-please-my-computer-is-on-fire')[0];
@@ -16,28 +33,16 @@ window.onload = function() {
   var distortion = 1.05;
   var loopIndex = 30;
   var lineCount = w/30;
-
-  var laserGridOnline = true;
-
-  /*var song = new Audio('static/audio/power-glove--power-core.ogg','static/audio/power-glove--power-core.mp3');
-  var duration = song.duration;
+  var laserGridOnline;
   
-  if (song.canPlayType('audio/mpeg;')) {
-    song.type= 'audio/mpeg';
-    song.src= 'static/audio/power-glove--power-core.mp3';
-  } else {
-    song.type= 'audio/ogg';
-    song.src= 'static/audio/power-glove--power-core.ogg';
+  if((getCookie('laserGrid') === "")){
+    laserGridOnline = true;
+  }else{
+    laserGridOnline = JSON.parse(getCookie('laserGrid'));
   }
 
-  song.play();
-
-  console.log(song);
-  */
-
-  function resizeCanvas() {
+  function resizeCanvas() {    
     if(powerStation.offsetWidth <= 768){
-      //console.log(this);
       canvas.height = 200;
     }else{
       canvas.height = 400;
@@ -46,23 +51,44 @@ window.onload = function() {
     w = canvas.width;
     h = canvas.height;
     lineCount = w/30;
-
-
   }
+
+
+  function toggleLaserGrid(check) {
+    if(check !== true){
+      laserGridOnline = !laserGridOnline;
+      setCookie('laserGrid', laserGridOnline, 1);
+      window.requestAnimationFrame(runLaserGrid);
+    }
+
+    if(laserGridOnline === true){
+      laserGridToggle.innerHTML = "My computer is on fire, please turn of this terribly coded and resource-hungry LASER GRID.";
+    }else{
+      laserGridToggle.innerHTML = "Actually this LASER GRID is too awesome. I don't care about the wellbeing of my computer. Turn it back on!";
+    }
+  }
+
   resizeCanvas();
 
   var cx = w,
       cy = h/2,
       cx2 = w*2,
-      cy2 = canvas.height;
+      cy2 = canvas.height,
+      fps = 24,
+      now,
+      then = Date.now(),
+      interval = 1000/fps,
+      delta,
+      firstPass = true;
 
-  var flip = {
-    
-    theSwitch: function () {
-      window.requestAnimationFrame(flip.table);
-    },
 
-    table: function(){
+  function runLaserGrid(){
+    now = Date.now();
+    delta = now - then;
+     
+    if (delta > interval || firstPass === true) {
+
+      firstPass = false;
 
       if(loopIndex>=30){
         cx = w;
@@ -80,7 +106,6 @@ window.onload = function() {
       var lineX = 1;
 
       for(var i=0; i<=22; i++) {
-
         ctx.beginPath();
         ctx.moveTo(0, lineX);
         ctx.lineTo(w, lineX);
@@ -91,12 +116,10 @@ window.onload = function() {
         ctx.shadowColor = "deeppink";
 
         lineX = h / 2 - (lineX * distortion);
-
       }
 
 
       for(var j=0; j<=lineCount; j++) {
-
         ctx.beginPath();
         ctx.moveTo(cx-j*30, cy);
         ctx.lineTo(cx2-j*90, cy2);
@@ -105,45 +128,31 @@ window.onload = function() {
         ctx.stroke();
         ctx.shadowBlur = 10;
         ctx.shadowColor = "deeppink";
-
       }
 
       cx--;
       cx2 -=3;
-      
-      if(laserGridOnline === true){
-        window.requestAnimationFrame(flip.table);
-      }
+
+      then = now - (delta % interval);
+
     }
-  };
 
+    if(laserGridOnline === true){
+      window.requestAnimationFrame(runLaserGrid);
+    }
+  }
 
-  flip.theSwitch();
+  window.requestAnimationFrame(runLaserGrid);
+  
+  toggleLaserGrid(true);
 
   window.addEventListener('resize', resizeCanvas, false);
-
-  /*mute.addEventListener("click", function(e) {
-    if(song.muted !== true){
-      song.muted = true;
-      this.className = "fa fa-volume-off";
-    }else{
-      song.muted = false;
-      this.className = "fa fa-volume-up";
-    }
-  });*/
   
   setTimeout(function(){
     music.className = "the-music animated bounceInLeft ";
-  },500);
+  },200);
 
   laserGridToggle.addEventListener("click", function(e) {
-    if(laserGridOnline === true){
-      laserGridOnline = false;
-      laserGridToggle.innerHTML = "Actually this LASER GRID is too awesome. I don't care about the wellbeing of my computer. Turn it back on!";
-    }else{
-      laserGridOnline = true;
-      window.requestAnimationFrame(flip.table);
-      laserGridToggle.innerHTML = "My computer is on fire, please turn of this terribly coded and inefficient LASER GRID.";
-    }
+    toggleLaserGrid();
   });
-};
+});

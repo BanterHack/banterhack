@@ -14,14 +14,15 @@
   	width: 100%;
   	height: 100%;
   	padding: 0;
-  }
-
-  .power-core{
-    background-image: url(http://make.cat/assets/images/bg.png);
-    border-bottom: 2px solid $light-pink;
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center;
+    background-image: url(http://make.cat/assets/images/bg.png);
+  }
+
+  .power-core{
+    border-bottom: 2px solid $light-pink;
+
   }
 
   .power-source{
