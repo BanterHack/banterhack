@@ -30,10 +30,12 @@ window.addEventListener("DOMContentLoaded", function() {
   var h = canvas.height;
 
   var lineW = 2;
-  var distortion = 1.05;
+  var distortion = 1.13;
   var loopIndex = 30;
   var lineCount = w/30;
   var laserGridOnline;
+  var horizontalLineCount = 10;
+
   
   if((getCookie('laserGrid') === "")){
     laserGridOnline = true;
@@ -43,13 +45,16 @@ window.addEventListener("DOMContentLoaded", function() {
 
   function resizeCanvas() {
     if(powerStation.offsetWidth <= 768){
-      canvas.height = 200;
+      canvas.height = 100;
+      horizontalLineCount = 6;
     }else{
-      canvas.height = 400;
+      canvas.height = 200;
+      horizontalLineCount = 10;
     }
     canvas.width = powerStation.offsetWidth;
     w = canvas.width;
     h = canvas.height;
+
     lineCount = w/30;
   }
 
@@ -71,7 +76,7 @@ window.addEventListener("DOMContentLoaded", function() {
   resizeCanvas();
 
   var cx = w,
-      cy = h/2,
+      cy = 0,
       cx2 = w*2,
       cy2 = canvas.height,
       fps = 24,
@@ -80,7 +85,6 @@ window.addEventListener("DOMContentLoaded", function() {
       interval = 1000/fps,
       delta,
       firstPass = true;
-
 
   function runLaserGrid(){
     now = Date.now();
@@ -92,7 +96,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
       if(loopIndex>=30){
         cx = w;
-        cy = h/2;
+        cy = 0;
         cx2 = w*2;
         cy2 = canvas.height;
 
@@ -103,19 +107,19 @@ window.addEventListener("DOMContentLoaded", function() {
 
       ctx.clearRect(0,0,w,h);
 
-      var lineX = 1;
+      var lineY = 1;
 
-      for(var i=0; i<=22; i++) {
+      for(var i=0; i<=horizontalLineCount; i++) {
         ctx.beginPath();
-        ctx.moveTo(0, lineX);
-        ctx.lineTo(w, lineX);
+        ctx.moveTo(0, lineY);
+        ctx.lineTo(w, lineY);
         ctx.lineWidth = lineW;
         ctx.strokeStyle = 'pink';
         ctx.stroke();
         ctx.shadowBlur = 10;
         ctx.shadowColor = "deeppink";
 
-        lineX = h / 2 - (lineX * distortion);
+        lineY = (lineY + 8) * distortion;
       }
 
 
