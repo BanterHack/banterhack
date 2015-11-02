@@ -35,12 +35,81 @@ window.addEventListener("DOMContentLoaded", function() {
   var lineCount = w/30;
   var laserGridOnline;
   var horizontalLineCount = 10;
+  var laserInterval;
 
   
   if((getCookie('laserGrid') === "")){
     laserGridOnline = true;
   }else{
     laserGridOnline = JSON.parse(getCookie('laserGrid'));
+  }
+
+  var cx = w,
+      cy = 0,
+      cx2 = w*2,
+      cy2 = canvas.height,
+      fps = 24,
+      now,
+      then = Date.now(),
+      interval = 1000/fps,
+      delta,
+      firstPass = true;
+
+  function theLaserGrid(){
+     
+    firstPass = false;
+
+    if(loopIndex>=30){
+      cx = w;
+      cy = 0;
+      cx2 = w*2;
+      cy2 = canvas.height;
+
+      loopIndex = 1;
+    }else{
+      loopIndex++;
+    }
+
+    ctx.clearRect(0,0,w,h);
+
+    var lineY = 1;
+
+    for(var i=0; i<=horizontalLineCount; i++) {
+      ctx.beginPath();
+      ctx.moveTo(0, lineY);
+      ctx.lineTo(w, lineY);
+      ctx.lineWidth = lineW;
+      ctx.strokeStyle = 'pink';
+      ctx.stroke();
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = "deeppink";
+
+      lineY = (lineY + 8) * distortion;
+    }
+
+
+    for(var j=0; j<=lineCount; j++) {
+      ctx.beginPath();
+      ctx.moveTo(cx-j*30, cy);
+      ctx.lineTo(cx2-j*90, cy2);
+      ctx.lineWidth = lineW;
+      ctx.strokeStyle = 'pink';
+      ctx.stroke();
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = "deeppink";
+    }
+
+    cx--;
+    cx2 -=3;
+
+  }
+
+  function runLaserGrid(){
+    if(typeof laserInterval != "undefined") clearInterval(laserInterval);
+    laserInterval = setInterval(theLaserGrid, 33);
+  }
+  function stopLaserGrid(){
+    clearInterval(laserInterval);
   }
 
   function resizeCanvas() {
@@ -54,104 +123,33 @@ window.addEventListener("DOMContentLoaded", function() {
     canvas.width = powerStation.offsetWidth;
     w = canvas.width;
     h = canvas.height;
-
     lineCount = w/30;
   }
-
 
   function toggleLaserGrid(check) {
     if(check !== true){
       laserGridOnline = !laserGridOnline;
       setCookie('laserGrid', laserGridOnline, 1);
-      window.requestAnimationFrame(runLaserGrid);
+      window.requestAnimationFrame(theLaserGrid);
     }
 
     if(laserGridOnline === true){
       laserGridToggle.innerHTML = "My computer is on fire, please turn of this terribly coded and resource-hungry LASER GRID.";
+      runLaserGrid();
     }else{
       laserGridToggle.innerHTML = "Actually this LASER GRID is too awesome. I don't care about the wellbeing of my computer. Turn it back on!";
+      stopLaserGrid();
     }
   }
-
-  resizeCanvas();
-
-  var cx = w,
-      cy = 0,
-      cx2 = w*2,
-      cy2 = canvas.height,
-      fps = 24,
-      now,
-      then = Date.now(),
-      interval = 1000/fps,
-      delta,
-      firstPass = true;
-
-  function runLaserGrid(){
-    now = Date.now();
-    delta = now - then;
-     
-    if (delta > interval || firstPass === true) {
-
-      firstPass = false;
-
-      if(loopIndex>=30){
-        cx = w;
-        cy = 0;
-        cx2 = w*2;
-        cy2 = canvas.height;
-
-        loopIndex = 1;
-      }else{
-        loopIndex++;
-      }
-
-      ctx.clearRect(0,0,w,h);
-
-      var lineY = 1;
-
-      for(var i=0; i<=horizontalLineCount; i++) {
-        ctx.beginPath();
-        ctx.moveTo(0, lineY);
-        ctx.lineTo(w, lineY);
-        ctx.lineWidth = lineW;
-        ctx.strokeStyle = 'pink';
-        ctx.stroke();
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "deeppink";
-
-        lineY = (lineY + 8) * distortion;
-      }
-
-
-      for(var j=0; j<=lineCount; j++) {
-        ctx.beginPath();
-        ctx.moveTo(cx-j*30, cy);
-        ctx.lineTo(cx2-j*90, cy2);
-        ctx.lineWidth = lineW;
-        ctx.strokeStyle = 'pink';
-        ctx.stroke();
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "deeppink";
-      }
-
-      cx--;
-      cx2 -=3;
-
-      then = now - (delta % interval);
-
-    }
-
-    if(laserGridOnline === true){
-      window.requestAnimationFrame(runLaserGrid);
-    }
-  }
-
-  window.requestAnimationFrame(runLaserGrid);
-  
-  toggleLaserGrid(true);
 
   window.addEventListener('resize', resizeCanvas, false);
-  
+
+
+  resizeCanvas();
+  theLaserGrid();
+  toggleLaserGrid(true);
+
+
   setTimeout(function(){
     music.className = "the-music animated bounceInRight ";
   },200);
