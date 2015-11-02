@@ -149,7 +149,7 @@ window.addEventListener("DOMContentLoaded", function() {
   window.addEventListener('resize', resizeCanvas, false);
   
   setTimeout(function(){
-    music.className = "the-music animated bounceInLeft ";
+    music.className = "the-music animated bounceInRight ";
   },200);
 
   laserGridToggle.addEventListener("click", function(e) {
