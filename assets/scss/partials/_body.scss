@@ -6,22 +6,15 @@ body {
 
 hr{
   border-color: $light-pink;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+hr:first-of-type{
+  margin-top: 50px;
 }
 
 h1{
   margin-top: 50px;
-}
-
-i{
-  margin-right: 10px;
-}
-
-.fa-thumbs-up{
-  color: green;
-}
-
-.fa-thumbs-down{
-  color: red;
 }
 
 .build-cool-shit img{
