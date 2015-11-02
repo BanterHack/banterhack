@@ -1,6 +1,9 @@
-body {
+body{
   background-color: $dark-grey;
   color: $white;
+}
+
+.container{
   margin-bottom: 80px;
 }
 
@@ -26,6 +29,13 @@ h1{
 
 .sponsors img{
   border-radius: 3px;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+
+  @media #{$medium-and-below} {
+    max-width: 320px;
+  }
 }
 
 .list-group{

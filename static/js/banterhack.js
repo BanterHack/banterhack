@@ -41,7 +41,7 @@ window.addEventListener("DOMContentLoaded", function() {
     laserGridOnline = JSON.parse(getCookie('laserGrid'));
   }
 
-  function resizeCanvas() {    
+  function resizeCanvas() {
     if(powerStation.offsetWidth <= 768){
       canvas.height = 200;
     }else{
