@@ -28,6 +28,26 @@ h1{
   border-radius: 3px;
 }
 
-.list-group-item{
-  background-color: transparent;
+.list-group{
+
+  .fa{
+    margin-right: 12px;
+
+    &.fa-check{
+      color: $positive-green;
+    }
+
+    &.fa-times{
+      color: $negative-red;
+    }
+  }
+
+  .list-group-item{
+    background-color: transparent;
+
+    h4{
+      margin: 2px 0;
+      text-align: center;
+    }
+  }
 }
