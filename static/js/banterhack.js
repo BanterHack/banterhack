@@ -1,5 +1,25 @@
 window.addEventListener("DOMContentLoaded", function() {
 
+  var canvas = document.getElementsByClassName('power-core')[0],
+      laserGridToggle = document.getElementsByClassName('oh-god-turn-it-off-please-my-computer-is-on-fire')[0],
+      powerStation = document.getElementsByClassName('power-station')[0],
+      music = document.getElementsByClassName('the-music')[0],
+      ctx = canvas.getContext('2d'),
+      w = canvas.width,
+      h = canvas.height,
+      cx = w,
+      cy = 0,
+      cx2 = w*2,
+      cy2 = canvas.height,
+      lineW = 2,
+      distortion = 1.13,
+      loopIndex = 30,
+      lineCount = w/30,
+      laserGridOnline,
+      horizontalLineCount = 10,
+      laserInterval;
+
+
   function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -19,46 +39,8 @@ window.addEventListener("DOMContentLoaded", function() {
     return "";
   }
 
-  var canvas = document.getElementsByClassName('power-core')[0];
-  var laserGridToggle = document.getElementsByClassName('oh-god-turn-it-off-please-my-computer-is-on-fire')[0];
-  var powerStation = document.getElementsByClassName('power-station')[0];
-  var music = document.getElementsByClassName('the-music')[0];
-  var mute = document.getElementById('mute');
-
-  var ctx = canvas.getContext('2d');
-  var w = canvas.width;
-  var h = canvas.height;
-
-  var lineW = 2;
-  var distortion = 1.13;
-  var loopIndex = 30;
-  var lineCount = w/30;
-  var laserGridOnline;
-  var horizontalLineCount = 10;
-  var laserInterval;
-
-  
-  if((getCookie('laserGrid') === "")){
-    laserGridOnline = true;
-  }else{
-    laserGridOnline = JSON.parse(getCookie('laserGrid'));
-  }
-
-  var cx = w,
-      cy = 0,
-      cx2 = w*2,
-      cy2 = canvas.height,
-      fps = 24,
-      now,
-      then = Date.now(),
-      interval = 1000/fps,
-      delta,
-      firstPass = true;
-
   function theLaserGrid(){
      
-    firstPass = false;
-
     if(loopIndex>=30){
       cx = w;
       cy = 0;
@@ -101,14 +83,14 @@ window.addEventListener("DOMContentLoaded", function() {
 
     cx--;
     cx2 -=3;
-
   }
 
-  function runLaserGrid(){
+  function runLaserGrid() {
     if(typeof laserInterval != "undefined") clearInterval(laserInterval);
     laserInterval = setInterval(theLaserGrid, 33);
   }
-  function stopLaserGrid(){
+
+  function stopLaserGrid() {
     clearInterval(laserInterval);
   }
 
@@ -142,19 +124,28 @@ window.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  window.addEventListener('resize', resizeCanvas, false);
+  function begin() {
+    if((getCookie('laserGrid') === "")){
+      laserGridOnline = true;
+    }else{
+      laserGridOnline = JSON.parse(getCookie('laserGrid'));
+    }
 
+    window.addEventListener('resize', resizeCanvas, false);
 
-  resizeCanvas();
-  theLaserGrid();
-  toggleLaserGrid(true);
+    resizeCanvas();
+    theLaserGrid();
+    toggleLaserGrid(true);
 
+    setTimeout(function(){
+      music.className = "the-music animated bounceInRight ";
+    },200);
+  }
 
-  setTimeout(function(){
-    music.className = "the-music animated bounceInRight ";
-  },200);
+  begin();
 
   laserGridToggle.addEventListener("click", function(e) {
     toggleLaserGrid();
   });
+  
 });
