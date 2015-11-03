@@ -3,15 +3,26 @@ body{
   color: $white;
 }
 
+a {
+  color: $link-blue;
+
+  &:hover{
+    @extend a;
+    text-decoration: underline;
+  }
+}
+
 .container{
   margin-bottom: 80px;
 }
 
 hr{
   border-color: $light-pink;
+  box-shadow: 0 0 5px $deep-pink;
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
 hr:first-of-type{
   margin-top: 50px;
 }
@@ -64,4 +75,30 @@ h1{
 
 .carousel img{
   width: 100%;
+
+  @media #{$medium-and-below} {
+    padding-top: 15px;
+  } 
+}
+
+.map{
+  width: 100%;
+  height: 196px;
+  
+  @media #{$mid-large-and-below} {
+    height: 159px;
+  }
+
+  @media #{$medium-and-below} {
+    height: 320px;
+  } 
+}
+
+.schedule-image{
+  display: block;
+
+  @media #{$medium-and-below} {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

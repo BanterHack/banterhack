@@ -1,5 +1,5 @@
 $white: #FFFFFF;
-$link-blue: #72D3CA;
+$link-blue: #7DDBE6;
 $light-grey: #CCCCCC;
 $dark-grey: #252525;
 $light-pink: #FFC0CB;
@@ -9,6 +9,7 @@ $negative-red: #FF4848;
 
 $small-only: "only screen and (max-width : 768px)";
 $medium-and-below: "only screen and (max-width : 992px)";
+$mid-large-and-below: "only screen and (max-width : 1200px)";
 
 
 @import 'partials/body';
