@@ -28,7 +28,7 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   function getCookie(cname) {
-    
+
     var name = cname + "=";
     var ca = document.cookie.split(';');
     for(var i=0; i<ca.length; i++) {
@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   function theLaserGrid(){
-     
+
     if(loopIndex>=30){
       cx = w;
       cy = 0;
@@ -147,5 +147,5 @@ window.addEventListener("DOMContentLoaded", function() {
   laserGridToggle.addEventListener("click", function(e) {
     toggleLaserGrid();
   });
-  
+
 });
