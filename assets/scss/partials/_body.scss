@@ -35,13 +35,7 @@ h1{
   margin-top: 50px;
 }
 
-.build-cool-shit img{
-  margin-top: 5px;
-  width: 180px;
-  height: 180px;
-}
-
-.sponsors img{
+img{
   width: 100%;
   margin: 0 auto;
   display: block;
@@ -49,6 +43,12 @@ h1{
   @media #{$medium-and-below} {
     max-width: 320px;
   }
+}
+
+.build-cool-shit img{
+  margin-top: 5px;
+  width: 180px;
+  height: 180px;
 }
 
 .list-group{
