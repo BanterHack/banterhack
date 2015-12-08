@@ -109,8 +109,14 @@ img{
 }
 
 .btn-default{
+  color: $white;
   border-color: $light-pink;
   background-color: transparent;
-  color: $white;
-  box-shadow: 0 0 5px $deep-pink, 0 0 5px $deep-pink inset;
+  box-shadow: 0 0 2px $deep-pink, 0 0 2px $deep-pink inset;
+
+  &:hover{
+    @extend .btn-default;
+    border-color: $white;
+    box-shadow: 0 0 8px $deep-pink, 0 0 8px $deep-pink inset;
+  }
 }
