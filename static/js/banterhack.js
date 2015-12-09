@@ -104,8 +104,11 @@ window.addEventListener("DOMContentLoaded", function() {
     }else{
       canvas.height = 200;
       horizontalLineCount = 10;
-      laserGridOnline = JSON.parse(getCookie('laserGrid'));
-      //runLaserGrid();
+      if((getCookie('laserGrid') === "")){
+        laserGridOnline = true;
+      }else{
+        laserGridOnline = JSON.parse(getCookie('laserGrid'));
+      }
     }
     canvas.width = powerStation.offsetWidth;
     w = canvas.width;
