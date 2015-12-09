@@ -35,7 +35,7 @@ h1{
   margin-top: 50px;
 }
 
-img{
+img:not(.power-source){
   width: 100%;
   margin: 0 auto;
   display: block;

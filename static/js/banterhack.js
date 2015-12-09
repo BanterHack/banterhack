@@ -52,7 +52,9 @@ window.addEventListener("DOMContentLoaded", function() {
       loopIndex++;
     }
 
-    ctx.clearRect(0,0,w,h);
+    ctx.rect(0,0,w,h);
+    ctx.fillStyle="black";
+    ctx.fill();
 
     var lineY = 1;
 
@@ -98,9 +100,12 @@ window.addEventListener("DOMContentLoaded", function() {
     if(powerStation.offsetWidth <= 768){
       canvas.height = 100;
       horizontalLineCount = 6;
+      laserGridOnline = false
     }else{
       canvas.height = 200;
       horizontalLineCount = 10;
+      laserGridOnline = JSON.parse(getCookie('laserGrid'));
+      //runLaserGrid();
     }
     canvas.width = powerStation.offsetWidth;
     w = canvas.width;
@@ -134,7 +139,10 @@ window.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('resize', resizeCanvas, false);
 
     resizeCanvas();
-    theLaserGrid();
+
+    if(laserGridOnline === true){
+      theLaserGrid();
+    }
     toggleLaserGrid(true);
 
     setTimeout(function(){
