@@ -127,3 +127,20 @@ img:not(.power-source){
     box-shadow: 0 0 8px $deep-pink, 0 0 8px $deep-pink inset;
   }
 }
+.modal-content{
+  background-color: $dark-grey;
+  border: white;
+}
+
+.modal-content h2{
+  margin-top: 0;
+}
+
+.modal-content .no-top-border{
+  border-top: none;
+}
+
+.modal-content .fa-leaf{
+  margin-left: 5px;
+  color: green;
+}

@@ -166,7 +166,7 @@
         </div>
       </div>
 
-      <h1>Schedule</h1>
+      <h1 id="schedule">Schedule</h1>
       <hr>
       <div class="row">
         <div class="col-md-4">
@@ -185,6 +185,11 @@
             <tr><td>19:00</td><td>Dinner</td></tr>
             <tr><td>19:00</td><td>Mandatory nerf gun war</td></tr>
           </table>
+          <div class="btn-group pull-right animated infinite pulse">
+            <a><button type="button" class="btn btn-lg btn-default" data-toggle="modal" data-target="#myModal">
+              <i class="fa fa-cutlery"></i> Food menu</button>
+            </a>
+          </div>
         </div>
         <div class="col-md-4">
           <h4 class="text-center">Sunday, February 7th</h4>
@@ -205,7 +210,6 @@
               <i class="fa fa-ticket"></i> Apply</button>
             </a>
           </div>
-
         </div>
       </div>
 
@@ -255,7 +259,76 @@
       </div>
     </div>
 
+    <!-- music -->
     <iframe class="the-music music-hide" width="100%" height="80" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/86188777&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=false&amp;color=F5B6C1"></iframe>
+
+    <!-- modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <table class="table">
+              <td colspan="5" class="no-top-border"><h2>Saturday</h2></td>
+              <tr>
+                <td>10:00</td>
+                <td>Breakfast</td>
+                <td></td>
+                <td>Tea/coffee and snacks</td>
+                <td>&pound;50</td>
+              </tr>
+              <tr>
+                <td>12:00</td>
+                <td>Lunch</td>
+                <td><a href="http://www.yelp.co.uk/biz/ruby-london" target="_blank">Ruby</a></td>
+                <td>
+                  <p>10x regular tomato penne pasta <i class="fa fa-leaf"></i></p>
+                  <p>10x leek &amp; mushroom risotto <i class="fa fa-leaf"></i></p>
+                  <p>40x pork &amp; ricotta baked pasta</p>
+                  <p>40x couscous and baked chicken</p>
+                </td>
+                <td>&pound;500</td>
+              </tr>
+              <tr>
+                <td>19:00</td>
+                <td>Dinner</td>
+                <td><a href="http://www.yelp.co.uk/biz/neds-noodle-bar-london" target="_blank">Ned’s Noodles</a></td>
+                <td>
+                  <p>10x Rice Noodles + Thai green curry sauce + Tofu <i class="fa fa-leaf"></i></p>
+                  <p>10x Udon Noodles + Sweet &amp; sour sauce + Tofu <i class="fa fa-leaf"></i></p>
+                  <p>30x Egg Noodles + Chinese bbq sauce + Chicken</p>
+                  <p>25x Udon Noodles + Yakisoba sauce + Duck</p>
+                  <p>25x Egg Noodles + Black bean sauce + Beef</p>
+                </td>
+                <td>&pound;644</td>
+              </tr>
+            <tr>
+              <td colspan="5" class="no-top-border"><h2>Sunday</h2></td>
+            </tr>
+              <tr>
+                <td>09:00</td>
+                <td>Breakfast</td>
+                <td></td>
+                <td>Cereal + fruit</td>
+                <td>&pound;130</td>
+              </tr>
+              <tr>
+                <td>12:00</td>
+                <td>Lunch</td>
+                <td><a href="http://www.yelp.co.uk/biz/k%C3%AAu-london-2" target="_blank">Keu</a></td>
+                <td>
+                  <p>20x Smokey Aubergine baguette <i class="fa fa-leaf"></i></p>
+                  <p>27x Classic baguette</p>
+                  <p>27x Chicken baguette</p>
+                  <p>26x Roast Duck baguette</p>
+                </td>
+                <td>&pound;593.90</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <!-- scripts -->
     <script src="static/js/jquery.js"></script>
