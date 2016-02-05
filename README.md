@@ -1,4 +1,4 @@
-![alt tag](http://i.imgur.com/W7DjfSq.png)
+![alt tag](http://i.imgur.com/wsBgb23.jpg)
 - Main site: http://banterhack.com
 - Heroku site: http://banterhack.herokuapp.com
 
