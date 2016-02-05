@@ -1,8 +1,10 @@
-# BanterHack 2016
-- Main site: http://banterhack.com
-- Heroku site: http://banterhack.herokuapp.com
+![alt tag](http://i.imgur.com/wsBgb23.jpg)
 
 # Running the site
+```
+$ heroku local
+```
+or
 ```
 $ pip install -r requirments.txt
 $ python app.py
