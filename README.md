@@ -2,10 +2,6 @@
 
 # Running the site
 ```
-$ heroku local
+$ npm run build
 ```
-or
-```
-$ pip install -r requirments.txt
-$ python app.py
-```
+run a server from the `dist` folder
