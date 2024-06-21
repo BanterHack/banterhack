@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "create-dist": "mkdir -p dist && mkdir -p dist/static",
     "build-css": "node-sass assets/scss -o static/css",
-    "copy-files": "cp -R static/ dist/static && cp -R templates/index.html dist",
+    "copy-files": "cp -R static/ dist && cp -R templates/index.html dist",
     "build": "npm run build-css && npm run create-dist && npm run copy-files"
   },
   "repository": {
