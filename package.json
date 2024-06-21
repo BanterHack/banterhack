@@ -1,0 +1,26 @@
+{
+  "name": "banterhack",
+  "version": "1.0.0",
+  "description": "the banterhack website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create-dist": "mkdir -p dist && mkdir -p dist/static",
+    "build-css": "node-sass assets/scss -o static/css",
+    "copy-files": "cp -R static/ dist/static && cp -R templates/index.html dist",
+    "build": "npm run build-css && npm run create-dist && npm run copy-files"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BanterHack/banterhack.git"
+  },
+  "author": "Manoj, Sidd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BanterHack/banterhack/issues"
+  },
+  "homepage": "https://github.com/BanterHack/banterhack#readme",
+  "dependencies": {
+    "node-sass": "^9.0.0"
+  }
+}
